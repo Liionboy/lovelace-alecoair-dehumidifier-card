@@ -1,6 +1,6 @@
 const CARD_TAG = "alecoair-dehumidifier-card";
 const PALETTES = new Set(["aurora", "ocean", "sunset", "lavender"]);
-const MODE_LABELS = { auto: "Automat", boost: "Intensiv", sleep: "Noapte", normal: "Normal", eco: "Eco" };
+const MODE_LABELS = { auto: "Auto", boost: "Boost", sleep: "Sleep", normal: "Normal", eco: "Eco" };
 
 const STYLE = `
   :host{display:block;min-width:0;max-width:100%;color:var(--primary-text-color)}
@@ -164,8 +164,8 @@ class AlecoairDehumidifierCard extends HTMLElement {
     const modes = (Number(attr.supported_features || 0) & 1) && Array.isArray(attr.available_modes) ? attr.available_modes : [];
     const mode = typeof attr.mode === "string" ? attr.mode : "";
     const title = this._config.title || attr.friendly_name || "AlecoAir Dehumidifier";
-    const stateLabel = unavailable ? "Indisponibil" : active ? "Pornit" : "Oprit";
-    const modeSelect = modes.length > 0 ? `<label class="mode-wrap"><span class="mode-label">Mod</span><select class="mode-select" aria-label="Mod de funcționare" data-control="mode">${modes.map((item) => `<option value="${escapeHtml(item)}" ${item === mode ? "selected" : ""}>${escapeHtml(this._formatMode(item))}</option>`).join("")}</select></label>` : "";
+    const stateLabel = unavailable ? "Unavailable" : active ? "On" : "Off";
+    const modeSelect = modes.length > 0 ? `<label class="mode-wrap"><span class="mode-label">Mode</span><select class="mode-select" aria-label="Operating mode" data-control="mode">${modes.map((item) => `<option value="${escapeHtml(item)}" ${item === mode ? "selected" : ""}>${escapeHtml(this._formatMode(item))}</option>`).join("")}</select></label>` : "";
 
     this.shadowRoot.innerHTML = `
       <style>${STYLE}</style>
@@ -175,14 +175,14 @@ class AlecoairDehumidifierCard extends HTMLElement {
             <div class="identity"><div class="icon-wrap"><ha-icon icon="mdi:air-humidifier"></ha-icon></div><div class="identity-copy"><div class="eyebrow">AlecoAir · D16</div><h2 class="title">${escapeHtml(title)}</h2></div></div>
             <div class="pill ${unavailable ? "unavailable" : active ? "on" : "off"}"><span class="dot"></span>${stateLabel}</div>
           </header>
-          <section class="humidity-grid" aria-label="Umiditate">
-            <div class="humidity-tile"><div class="tile-label"><ha-icon icon="mdi:target"></ha-icon>Țintă</div><div class="tile-value">${hasTarget ? `${target}<small>%</small>` : "—"}</div></div>
-            <div class="humidity-tile current"><div class="tile-label"><ha-icon icon="mdi:water-percent"></ha-icon>În cameră</div><div class="tile-value">${current === "—" ? current : `${Number(attr.current_humidity)}<small>%</small>`}</div></div>
+          <section class="humidity-grid" aria-label="Humidity">
+            <div class="humidity-tile"><div class="tile-label"><ha-icon icon="mdi:target"></ha-icon>Target</div><div class="tile-value">${hasTarget ? `${target}<small>%</small>` : "—"}</div></div>
+            <div class="humidity-tile current"><div class="tile-label"><ha-icon icon="mdi:water-percent"></ha-icon>In room</div><div class="tile-value">${current === "—" ? current : `${Number(attr.current_humidity)}<small>%</small>`}</div></div>
           </section>
-          ${hasTarget ? `<section class="slider-section"><div class="section-head"><span class="section-title">Umiditate dorită</span><output class="target-value" data-target-value>${target}%</output></div><input class="range" type="range" min="${min}" max="${max}" step="${step}" value="${target}" aria-label="Umiditate dorită" data-control="humidity" ${unavailable ? "disabled" : ""}><div class="range-limits"><span>${min}%</span><span>${max}%</span></div></section>` : ""}
+          ${hasTarget ? `<section class="slider-section"><div class="section-head"><span class="section-title">Target humidity</span><output class="target-value" data-target-value>${target}%</output></div><input class="range" type="range" min="${min}" max="${max}" step="${step}" value="${target}" aria-label="Target humidity" data-control="humidity" ${unavailable ? "disabled" : ""}><div class="range-limits"><span>${min}%</span><span>${max}%</span></div></section>` : ""}
           <div class="controls">${modeSelect}<button class="power" type="button" data-action="power" aria-label="${active ? "Turn off" : "Turn on"} ${escapeHtml(title)}" ${unavailable || this._pending ? "disabled" : ""}><ha-icon icon="mdi:power"></ha-icon><span>${this._pending ? "Sending…" : active ? "Turn off" : "Turn on"}</span></button></div>
           ${this._feedback ? `<p class="notice ${this._error ? "error" : ""}" role="status">${escapeHtml(this._feedback)}</p>` : ""}
-          ${modes.length === 0 && attr.available_modes ? `<p class="notice">Modurile nu sunt disponibile pentru capabilitățile expuse de entitate.</p>` : ""}
+          ${modes.length === 0 && attr.available_modes ? `<p class="notice">No operating modes are available for this entity.</p>` : ""}
         </div>
       </ha-card>`;
     this.shadowRoot.querySelector('[data-action="power"]')?.addEventListener("click", () => this._togglePower());
