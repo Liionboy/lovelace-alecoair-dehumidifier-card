@@ -5,6 +5,7 @@ A responsive, theme-aware Home Assistant card for humidifier entities used as de
 ## Features
 
 - On/off control with live entity-state feedback
+- English power button with pending, success, and service-error feedback
 - Current and target humidity display
 - Humidity slider uses the entity's `min_humidity`, `max_humidity`, and optional `target_humidity_step`
 - Mode selector appears only when the entity advertises the `MODES` feature and `available_modes`

@@ -15,7 +15,7 @@ const STYLE = `
   .pill{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1px solid color-mix(in srgb,currentColor 12%,transparent);border-radius:999px;background:color-mix(in srgb,currentColor 8%,var(--card-background-color,#fff));color:var(--secondary-text-color);font-size:11px;font-weight:750;white-space:nowrap}.dot{width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px color-mix(in srgb,currentColor 16%,transparent)}.pill.on{color:var(--success-color,#168b68)}.pill.off{color:var(--secondary-text-color)}.pill.unavailable{color:var(--error-color,#c74343)}
   .humidity-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:20px}.humidity-tile{min-width:0;padding:14px;border:1px solid color-mix(in srgb,var(--accent) 17%,var(--divider-color));border-radius:18px;background:linear-gradient(145deg,color-mix(in srgb,var(--accent) 8%,var(--card-background-color,#fff)),var(--card-background-color,#fff) 78%)}.humidity-tile.current{border-color:color-mix(in srgb,var(--accent2) 24%,var(--divider-color));background:linear-gradient(145deg,color-mix(in srgb,var(--accent2) 11%,var(--card-background-color,#fff)),var(--card-background-color,#fff) 78%)}.tile-label{display:flex;align-items:center;gap:6px;color:var(--secondary-text-color);font-size:10px;font-weight:760;letter-spacing:.08em;text-transform:uppercase}.tile-label ha-icon{--mdc-icon-size:15px;color:var(--accent)}.current .tile-label ha-icon{color:var(--accent2)}.tile-value{margin-top:6px;color:var(--accent);font-size:clamp(27px,6cqi,38px);font-weight:830;letter-spacing:-.06em;line-height:1}.current .tile-value{color:var(--accent2)}.tile-value small{font-size:.44em;font-weight:700;letter-spacing:0}
   .slider-section{margin-top:17px;padding:14px;border:1px solid color-mix(in srgb,var(--divider-color) 66%,transparent);border-radius:17px;background:color-mix(in srgb,var(--card-background-color,#fff) 85%,var(--secondary-background-color))}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.section-title{font-size:12px;font-weight:760}.target-value{color:var(--accent);font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}.range{display:block;width:100%;height:29px;margin:7px 0 0;accent-color:var(--accent);cursor:pointer;touch-action:pan-y}.range:disabled{opacity:.5;cursor:not-allowed}.range-limits{display:flex;justify-content:space-between;color:var(--secondary-text-color);font-size:10px;font-variant-numeric:tabular-nums}
-  .controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}.mode-wrap{display:flex;align-items:center;gap:8px;min-width:0}.mode-label{color:var(--secondary-text-color);font-size:11px;font-weight:700}.mode-select{max-width:150px;min-height:40px;padding:0 34px 0 12px;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--divider-color));border-radius:13px;background:color-mix(in srgb,var(--accent) 6%,var(--card-background-color,#fff));color:var(--primary-text-color);font:inherit;font-size:12px;font-weight:700}.power{display:flex;align-items:center;justify-content:center;gap:7px;min-width:105px;min-height:42px;padding:0 13px;border:0;border-radius:14px;background:linear-gradient(120deg,var(--accent),var(--accent2));box-shadow:0 6px 15px color-mix(in srgb,var(--accent) 23%,transparent);color:#fff;font:inherit;font-size:12px;font-weight:780;cursor:pointer;transition:filter .16s ease,transform .16s ease}.power:hover{filter:brightness(1.07);transform:translateY(-1px)}.power:active{transform:scale(.98)}.power:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(.6)}.power ha-icon{--mdc-icon-size:18px}.notice{margin-top:10px;color:var(--secondary-text-color);font-size:10px;line-height:1.4}
+  .controls{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px}.mode-wrap{display:flex;align-items:center;gap:8px;min-width:0}.mode-label{color:var(--secondary-text-color);font-size:11px;font-weight:700}.mode-select{max-width:150px;min-height:40px;padding:0 34px 0 12px;border:1px solid color-mix(in srgb,var(--accent) 24%,var(--divider-color));border-radius:13px;background:color-mix(in srgb,var(--accent) 6%,var(--card-background-color,#fff));color:var(--primary-text-color);font:inherit;font-size:12px;font-weight:700}.power{display:flex;align-items:center;justify-content:center;gap:7px;min-width:105px;min-height:42px;padding:0 13px;border:0;border-radius:14px;background:linear-gradient(120deg,var(--accent),var(--accent2));box-shadow:0 6px 15px color-mix(in srgb,var(--accent) 23%,transparent);color:#fff;font:inherit;font-size:12px;font-weight:780;cursor:pointer;transition:filter .16s ease,transform .16s ease}.power:hover:not(:disabled){filter:brightness(1.07);transform:translateY(-1px)}.power:active:not(:disabled){transform:scale(.98)}.power:disabled{opacity:.55;cursor:wait;filter:grayscale(.6)}.power ha-icon{--mdc-icon-size:18px}.notice{margin-top:10px;color:var(--secondary-text-color);font-size:10px;line-height:1.4}.notice.error{color:var(--error-color,#c74343)}
   @container alecoair-card (max-width:480px){.shell{padding:15px}.identity{gap:9px}.icon-wrap{flex-basis:40px;width:40px;height:40px;border-radius:14px}.icon-wrap ha-icon{--mdc-icon-size:22px}.pill{gap:5px;padding:6px 8px;font-size:10px}.humidity-grid{gap:8px;margin-top:15px}.humidity-tile{padding:11px;border-radius:15px}.tile-value{font-size:clamp(26px,8cqi,34px)}.slider-section{margin-top:13px;padding:12px}.controls{gap:7px;margin-top:11px}.power{min-width:92px;min-height:39px;padding:0 10px}}
   @container alecoair-card (max-width:360px){.shell{padding:12px}.header{gap:7px}.identity{gap:7px}.icon-wrap{flex-basis:36px;width:36px;height:36px}.title{font-size:15px}.pill{padding:5px 7px;font-size:9px}.humidity-tile{padding:9px}.tile-value{font-size:26px}.mode-wrap{gap:5px}.mode-label{font-size:10px}.mode-select{max-width:115px;min-height:37px;padding-left:8px}.power{min-width:78px;padding:0 7px;font-size:11px}}
   @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;scroll-behavior:auto!important}}
@@ -41,7 +41,6 @@ class AlecoairDehumidifierCard extends HTMLElement {
     this.addEventListener("pointercancel", () => this._onPointerEnd());
     this.addEventListener("pointerleave", () => this._onPointerEnd());
     this.addEventListener("contextmenu", (event) => this._onContextMenu(event));
-    this.shadowRoot.addEventListener("click", (event) => this._onClick(event));
     this.shadowRoot.addEventListener("input", (event) => this._onInput(event));
     this.shadowRoot.addEventListener("change", (event) => this._onChange(event));
   }
@@ -60,16 +59,53 @@ class AlecoairDehumidifierCard extends HTMLElement {
     this._render();
   }
 
-  set hass(value) { this._hass = value; this._render(); }
+  set hass(value) {
+    this._hass = value;
+    const state = this._state();
+    const signature = state ? JSON.stringify(state) : "missing";
+    if (signature !== this._entitySignature) {
+      this._entitySignature = signature;
+      this._render();
+    }
+  }
   get hass() { return this._hass; }
 
   _state() { return this._hass?.states?.[this._config.entity]; }
   _formatMode(mode) { return MODE_LABELS[mode] || String(mode).replaceAll("_", " ").replace(/^./, (char) => char.toUpperCase()); }
-  _service(service, data = {}) { this._hass?.callService("humidifier", service, { entity_id: this._config.entity, ...data }); }
+  async _service(service, data = {}) {
+    if (this._pending) return;
+    if (!this._hass?.callService) {
+      this._feedback = "Home Assistant is not ready.";
+      this._error = true;
+      this._render();
+      return;
+    }
+    clearTimeout(this._feedbackTimer);
+    this._pending = true;
+    this._feedback = "Sending command…";
+    this._error = false;
+    this._render();
+    try {
+      await this._hass.callService("humidifier", service, { entity_id: this._config.entity, ...data });
+      this._feedback = "Command sent";
+      this._error = false;
+      clearTimeout(this._feedbackTimer);
+      this._feedbackTimer = setTimeout(() => { this._feedback = ""; this._render(); }, 1800);
+    } catch (error) {
+      this._feedback = error?.message || "Home Assistant could not send the command.";
+      this._error = true;
+      clearTimeout(this._feedbackTimer);
+      this._feedbackTimer = setTimeout(() => { this._feedback = ""; this._error = false; this._render(); }, 5000);
+    } finally {
+      this._pending = false;
+      this._render();
+    }
+  }
 
-  _onClick(event) {
-    const button = event.composedPath().find((node) => node instanceof HTMLElement && node.dataset?.action);
-    if (button?.dataset.action === "power") this._service(this._state()?.state === "on" ? "turn_off" : "turn_on");
+  _togglePower() {
+    const state = this._state();
+    if (!state || ["unknown", "unavailable"].includes(state.state)) return;
+    return this._service(state.state === "on" ? "turn_off" : "turn_on");
   }
 
   _onInput(event) {
@@ -144,10 +180,12 @@ class AlecoairDehumidifierCard extends HTMLElement {
             <div class="humidity-tile current"><div class="tile-label"><ha-icon icon="mdi:water-percent"></ha-icon>În cameră</div><div class="tile-value">${current === "—" ? current : `${Number(attr.current_humidity)}<small>%</small>`}</div></div>
           </section>
           ${hasTarget ? `<section class="slider-section"><div class="section-head"><span class="section-title">Umiditate dorită</span><output class="target-value" data-target-value>${target}%</output></div><input class="range" type="range" min="${min}" max="${max}" step="${step}" value="${target}" aria-label="Umiditate dorită" data-control="humidity" ${unavailable ? "disabled" : ""}><div class="range-limits"><span>${min}%</span><span>${max}%</span></div></section>` : ""}
-          <div class="controls">${modeSelect}<button class="power" type="button" data-action="power" aria-label="${active ? "Oprește" : "Pornește"} ${escapeHtml(title)}" ${unavailable ? "disabled" : ""}><ha-icon icon="mdi:power"></ha-icon><span>${active ? "Oprește" : "Pornește"}</span></button></div>
+          <div class="controls">${modeSelect}<button class="power" type="button" data-action="power" aria-label="${active ? "Turn off" : "Turn on"} ${escapeHtml(title)}" ${unavailable || this._pending ? "disabled" : ""}><ha-icon icon="mdi:power"></ha-icon><span>${this._pending ? "Sending…" : active ? "Turn off" : "Turn on"}</span></button></div>
+          ${this._feedback ? `<p class="notice ${this._error ? "error" : ""}" role="status">${escapeHtml(this._feedback)}</p>` : ""}
           ${modes.length === 0 && attr.available_modes ? `<p class="notice">Modurile nu sunt disponibile pentru capabilitățile expuse de entitate.</p>` : ""}
         </div>
       </ha-card>`;
+    this.shadowRoot.querySelector('[data-action="power"]')?.addEventListener("click", () => this._togglePower());
   }
 }
 
